@@ -38,11 +38,11 @@ jobs:
         run: ./gradlew check -x lint --stacktrace
       - name: 'Gradle Build'
         run: ./gradlew build -x lint --stacktrace
-      - name: Upload APK
-        uses: AButler/upload-release-assets@v3.0
-        with:
-          files: "android-src/KV4PHT/app/build/outputs/apk/release/app-release-unsigned.apk;android-src/KV4PHT/app/build/outputs/apk/debug/app-debug.apk"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      #- name: Upload APK
+      #  uses: AButler/upload-release-assets@v3.0
+      #  with:
+      #    files: "android-src/KV4PHT/app/build/outputs/apk/release/app-release-unsigned.apk;android-src/KV4PHT/app/build/outputs/apk/debug/app-debug.apk"
+      #    repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v7
         with:
           name: app.apk
