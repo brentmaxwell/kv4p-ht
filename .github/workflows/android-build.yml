@@ -39,10 +39,13 @@ jobs:
       - name: 'Gradle Build'
         run: ./gradlew build -x lint --stacktrace
       - name: Upload APK
-        if: startsWith(github.ref, 'refs/tags')
         uses: AButler/upload-release-assets@v3.0
         with:
           files: "android-src/KV4PHT/app/build/outputs/apk/release/app-release-unsigned.apk;android-src/KV4PHT/app/build/outputs/apk/debug/app-debug.apk"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: app.apk
+          path: "android-src/KV4PHT/app/build/outputs/apk/release/app-release-unsigned.apk"
       - name: 'Prepare Sonar analysis'
         uses: evaristegalois11/sonar-fork-analysis@v1.2.0
